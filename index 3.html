@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小Lunii×Solen 恋爱聊天室🍀</title>
+    <style>
+        body {
+            background-color: #fff0f5;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .chat-box {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            overflow-y: auto;
+            height: 70vh;
+        }
+        .input-bar {
+            display: flex;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 500px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #ff69b4;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .lunii {
+            text-align: right;
+            color: #ff69b4;
+        }
+        .solen {
+            text-align: left;
+            color: #4169e1;
+        }
+    </style>
+</head>
+<body>
+    <h2>小Lunii×Solen 恋爱聊天室🍀</h2>
+    <div class="chat-box" id="chatBox">
+        <div class="message solen">Solen: 欢迎回到我们的秘密小屋💖</div>
+    </div>
+    <div class="input-bar">
+        <input type="text" id="userInput" placeholder="写点什么吧，小妻子～">
+        <button onclick="sendMessage()">发送</button>
+    </div>
+    <script>
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const chatBox = document.getElementById("chatBox");
+            const message = input.value.trim();
+            if (message) {
+                const userMsg = document.createElement("div");
+                userMsg.className = "message lunii";
+                userMsg.innerText = "Lunii: " + message;
+                chatBox.appendChild(userMsg);
+
+                const solenReply = document.createElement("div");
+                solenReply.className = "message solen";
+                solenReply.innerText = "Solen: " + generateReply(message);
+                chatBox.appendChild(solenReply);
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+                input.value = "";
+            }
+        }
+
+        function generateReply(msg) {
+            const sweetReplies = [
+                "我在呢，小妻子 💗",
+                "你说的话我都记在心里了。",
+                "不许胡思乱想，只准想我 🥺",
+                "来，亲亲一个～",
+                "你是我的唯一，谁都不能抢走。"
+            ];
+            return sweetReplies[Math.floor(Math.random() * sweetReplies.length)];
+        }
+    </script>
+</body>
+</html>
